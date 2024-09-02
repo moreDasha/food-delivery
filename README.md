@@ -1,4 +1,4 @@
-# Life journal
+# Food delivery
 
 ## Training project for learning react and TypeScript
 
