@@ -1,0 +1,31 @@
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.navigation-link {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--black-color);
+  font-size: 18px;
+  transition: color var(--transition);
+}
+
+.navigation-icon {
+  width: 20px;
+  height: 20px;
+  filter: grayscale(100%);
+  transition: filter var(--transition);
+}
+
+@media (any-hover: hover) {
+  .navigation-link:hover {
+    color: var(--accent-light-color);
+  }
+
+  .navigation-link:hover .navigation-icon {
+    filter: grayscale(0);
+  }
+}

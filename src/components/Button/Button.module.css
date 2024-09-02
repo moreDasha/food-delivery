@@ -1,0 +1,61 @@
+.button {
+    border: none;
+    border-radius: 28px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: fit-content;
+    color: var(--white-color);
+    transition: background-color var(--transition);
+  }
+  
+  .accent {
+    background-color: var(--accent-color);
+  }
+
+  .small {
+    padding: 10px 24px;
+  }
+
+  .large {
+    padding: 18px 60px;
+    text-transform: uppercase;
+  }
+
+  .off {
+    padding: 10px 24px 10px 10px;
+    font-size: 18px;
+  }
+
+  .off > span {
+    position: relative;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    background-color: var(--white-color);
+  }
+
+  .off > span::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    mask-image: url('../off.svg');
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: 75%;
+    background-color: var(--accent-color);
+    transition: background-color var(--transition);
+  }
+  
+  @media (any-hover: hover) {
+    .accent:hover {
+      background-color: var(--accent-light-color);
+    }
+
+    .off:hover > span::before {
+      background-color: var(--accent-light-color);
+    }
+  }

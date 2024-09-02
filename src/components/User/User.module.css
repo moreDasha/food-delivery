@@ -1,0 +1,33 @@
+.user {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center
+}
+
+.user-photo {
+  border-radius: 100%;
+  width: 82px;
+  height: 82px;
+  background-image: url('../avatar.svg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  overflow: hidden;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+  text-align: center;
+}
+
+.user-name {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.user-contact {
+  opacity: 0.4;
+}
