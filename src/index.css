@@ -3,11 +3,11 @@
   --accent-light-color: #f7b970;
   --background-color: #fcf1e4;
   --black-color: #1b1b1b;
-  --gray-color: #d9d9db;
+  --gray-color: #bcbcbc;
   --white-color: #FFFFFF;
-  --separator-color: #D4D6E0;
   --transition: ease-in-out .3s;
   --panel-width: 280px;
+  --box-shadow: 6px 6px 32px -16px rgba(0,0,0,0.2);
 }
 
 * {
@@ -29,6 +29,7 @@ body {
 
 a,
 button {
+  border: none;
   cursor: pointer;
   text-decoration: none;
 }

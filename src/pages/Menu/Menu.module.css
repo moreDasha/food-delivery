@@ -1,0 +1,10 @@
+.menu-header {
+  display: flex;
+  gap: 32px;
+  justify-content: space-between;
+}
+
+.menu-main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
