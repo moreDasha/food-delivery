@@ -11,7 +11,14 @@ export function Menu () {
           <InputSearch placeholder='Введите блюдо или состав'/>
         </div>
         <div className={styles['menu-main']}>
-            <ProductCard />
+            <ProductCard
+              id={1}
+              title='Наслаждение'
+              composition='Салями, руккола, помидоры, оливки'
+              price={300}
+              rating={4.5}
+              img='product-card/001.jpg'
+            />
         </div>
     </div>
   );

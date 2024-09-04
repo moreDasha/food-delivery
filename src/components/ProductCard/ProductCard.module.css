@@ -1,8 +1,14 @@
 .product-card {
   position: relative;
+}
+
+.product-link {
+  display: block;
   border-radius: 18px;
+  color: var(--black-color);
   background-color: var(--white-color);
   box-shadow: var(--box-shadow);
+  transition: transform var(--transition);
 }
 
 .product-img {
@@ -37,6 +43,7 @@
   right: 16px;
   padding: 6px;
   background-color: var(--accent-color);
+  transition: background-color var(--transition);
 }
 
 .product-cart-btn span {
@@ -68,6 +75,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  transition: color var(--transition);
 }
 
 .product-name {
@@ -80,5 +88,15 @@
 }
   
 @media (any-hover: hover) {
-   
+  .product-link:hover {
+    transform: scale(1.005);
+  }
+
+  .product-link:hover .product-info {
+    color: var(--accent-light-color);
+  }
+
+  .product-cart-btn:hover {
+    background-color: var(--accent-light-color);
+  }
 }
