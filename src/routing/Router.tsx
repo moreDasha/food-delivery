@@ -28,4 +28,4 @@ export const router = createBrowserRouter([
     path: '*',
     element: <Error />
   }
-]);
+], { basename: '/food-delivery/' });
