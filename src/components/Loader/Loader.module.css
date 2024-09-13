@@ -1,0 +1,67 @@
+.loader {
+  padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.loader-icon-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-icon-wave {
+  display: flex;
+  width: 35px;
+  height: 35px;
+  transform: rotate(90deg);
+}
+
+.loader-icon-wave path {
+  fill: none;
+  stroke-dasharray: 20.26506805419922;
+  stroke-dashoffset: 20.26506805419922;
+  stroke: rgb(193, 193, 193); 
+  stroke-linecap: round; 
+  stroke-linejoin: round; 
+  stroke-width: 2;
+  animation: wave 2s linear infinite;
+}
+
+.loader-icon-wave path:nth-child(2) {
+  stroke: rgb(132, 132, 132);
+}
+
+.loader-icon-plate {
+  width: 70px;
+  height: 70px;
+  animation: loader-rotate .7s ease-in-out alternate infinite;
+}
+
+.loader-text {
+  opacity: 0.5;
+  font-weight: 600;
+}
+
+@keyframes loader-rotate {
+  0% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(-5deg);
+  }
+}
+
+@keyframes wave {
+  from {
+    stroke-dashoffset: 20.26506805419922;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}

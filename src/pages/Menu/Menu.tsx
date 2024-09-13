@@ -5,17 +5,31 @@ import { ProductCard } from '../../components/ProductCard/ProductCard';
 import { ProductCardProps } from '../../components/ProductCard/ProductCard.props';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Loader } from '../../components/Loader/Loader';
 
 export function Menu() {
   const [products, setProducts] = useState<ProductCardProps[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const getProducts = async () => {
     // axios запрос
     try {
-       const { data } = await axios.get<ProductCardProps[]>('https://moredasha.github.io/food-delivery/products.json');
-       setProducts(data);
+      setIsLoading(true);
+
+      await new Promise<void>((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, 2000);
+      });
+
+      const { data } = await axios.get<ProductCardProps[]>(
+        'https://moredasha.github.io/food-delivery/products.json'
+      );
+      setProducts(data);
+      setIsLoading(false);
     } catch (e) {
       console.log(e);
+      setIsLoading(false);
       return;
     }
 
@@ -47,19 +61,26 @@ export function Menu() {
         <Title>Меню</Title>
         <InputSearch placeholder="Введите блюдо или состав" />
       </div>
-      <div className={styles['menu-main']}>
-        {products.map((item) => (
-          <ProductCard
-            key={item.id}
-            id={item.id}
-            name={item.name}
-            composition={item.composition}
-            price={item.price}
-            rating={item.rating}
-            img={item.img}
-          />
-        ))}
-      </div>
+
+      {isLoading && (
+        <Loader text='Загружаем меню'></Loader>
+      )}
+
+      {!isLoading && (
+        <div className={styles['menu-main']}>
+          {products.map((item) => (
+            <ProductCard
+              key={item.id}
+              id={item.id}
+              name={item.name}
+              composition={item.composition}
+              price={item.price}
+              rating={item.rating}
+              img={item.img}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
