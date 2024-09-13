@@ -13,6 +13,14 @@
   transition: color var(--transition);
 }
 
+.active {
+  color: var(--accent-light-color);
+}
+
+.active .navigation-icon {
+  filter: grayscale(0);
+}
+
 .navigation-icon {
   width: 20px;
   height: 20px;

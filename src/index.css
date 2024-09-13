@@ -1,13 +1,13 @@
 :root {
   --accent-color: #f08e83;
-  --accent-light-color: #f7b970;
+  --accent-light-color: #fab565;
   --background-color: #fcf1e4;
   --black-color: #1b1b1b;
-  --gray-color: #d9d9db;
+  --gray-color: #bcbcbc;
   --white-color: #FFFFFF;
-  --separator-color: #D4D6E0;
   --transition: ease-in-out .3s;
   --panel-width: 280px;
+  --box-shadow: 6px 6px 32px -16px rgba(0,0,0,0.2);
 }
 
 * {
@@ -16,7 +16,12 @@
   padding: 0;
 }
 
+html {
+  height: 100%;
+}
+
 body {
+  min-height: 100%;
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   color: var(--black-color);
@@ -29,6 +34,7 @@ body {
 
 a,
 button {
+  border: none;
   cursor: pointer;
   text-decoration: none;
 }
