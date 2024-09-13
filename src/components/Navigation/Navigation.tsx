@@ -9,7 +9,7 @@ export const Navigation = () => {
         [styles['active']]: isActive
       })}>
         <span className={styles['navigation-icon']}>
-          <img src="menu.svg" alt="navigation icon" />
+          <img src="img/icons/menu.svg" alt="navigation icon" />
         </span>
         <span>Меню</span>
       </NavLink>
@@ -17,7 +17,7 @@ export const Navigation = () => {
         [styles['active']]: isActive
       })}>
         <span className={styles['navigation-icon']}>
-          <img src="cart.svg" alt="navigation icon" />
+          <img src="img/icons/cart.svg" alt="navigation icon" />
         </span>
         <span>Корзина</span>
       </NavLink>

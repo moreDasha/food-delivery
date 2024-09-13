@@ -14,12 +14,12 @@ export const ProductCard = (props: ProductCardProps) => {
           <div className={styles['product-rating']}>
           {props.rating}
             <span>
-              <img src="star.svg" alt="star icon" />
+              <img src="img/icons/star.svg" alt="star icon" />
             </span>
           </div>
         </div>
         <div className={styles['product-info']}>
-          <p className={styles['product-name']}>{props.title}</p>
+          <p className={styles['product-name']}>{props.name}</p>
           <p className={styles['product-composition']}>
             {props.composition}
           </p>
@@ -27,7 +27,7 @@ export const ProductCard = (props: ProductCardProps) => {
       </Link>
       <button className={styles['product-cart-btn']}>
         <span>
-          <img src="cart-white.svg" alt="cart icon" />
+          <img src="img/icons/cart-white.svg" alt="cart icon" />
         </span>
       </button>
     </div>

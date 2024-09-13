@@ -8,7 +8,7 @@ export const InputSearch = forwardRef<HTMLInputElement, InputSearchProps>(
     return (
       <div className={styles['input-search-wrap']}>
         <span className={styles['input-search-icon']}>
-          <img src="search.svg" alt="search icon" />
+          <img src="img/icons/search.svg" alt="search icon" />
         </span>
         <input className={cn(styles['input-search'])} ref={ref} {...props}/>
       </div>
