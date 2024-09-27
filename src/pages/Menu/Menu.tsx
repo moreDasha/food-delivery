@@ -18,10 +18,11 @@ export function Menu() {
     try {
       setIsLoading(true);
 
+      // симуляция задержки загрузки для просмотре прелоадера
       await new Promise<void>((resolve) => {
         setTimeout(() => {
           resolve();
-        }, 2000);
+        }, 1500);
       });
 
       const { data } = await axios.get<ProductCardProps[]>(
@@ -91,3 +92,5 @@ export function Menu() {
     </div>
   );
 }
+
+export default Menu;
