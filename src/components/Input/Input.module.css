@@ -4,5 +4,16 @@
   padding: 20px;
   font-size: 18px;
   color: var(--black-color);
+  background-color: transparent;
   box-shadow: 15px 20px 45px 0px rgba(233, 233, 233, 0.25);
+  outline: none;
+  transition: border var(--transition);
+}
+
+.input::placeholder {
+  color: var(--gray-color);
+}
+
+.input:focus {
+  border-color: var(--black-color);
 }

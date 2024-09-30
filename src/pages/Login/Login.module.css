@@ -1,0 +1,42 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.login-form button {
+  width: 100%;
+}
+
+.login-form input {
+  width: 350px;
+}
+
+.input-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.input-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label-placeholder {
+  color: var(--gray-color);
+}
+
+.helper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: center;
+}

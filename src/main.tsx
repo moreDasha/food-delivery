@@ -1,13 +1,16 @@
+import './index.css';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, defer, RouterProvider } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import axios from 'axios';
-import './index.css';
+import { Basic } from './layout/Basic/Basic';
+import { Auth  } from './layout/Auth/Auth';
 import { Cart } from './pages/Cart/Cart';
 import { Error } from './pages/Error/Error';
-import { Basic } from './layout/Basic/Basic';
 import { Product } from './pages/Product/Product';
+import { Login } from './pages/Login/Login';
+import { Registration } from './pages/Registration/Registration';
 import { ProductCardProps } from './components/ProductCard/ProductCard.props';
 import { ErrorItem } from './components/Error/ErrorItem';
 
@@ -53,6 +56,20 @@ const router = createBrowserRouter([
           const product = data.find((item) => (String(item.id) === params.id));
           return product; */
         }
+      }
+    ]
+  },
+  {
+    path: '/auth',
+    element: <Auth />,
+    children: [
+      {
+        path: 'login',
+        element: <Login />
+      },
+      {
+        path: 'registration',
+        element: <Registration />
       }
     ]
   },
