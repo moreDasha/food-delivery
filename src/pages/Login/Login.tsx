@@ -1,14 +1,45 @@
 import styles from './Login.module.css';
+import { Link } from 'react-router-dom';
+import { FormEvent, useState } from 'react';
+import axios, { AxiosError } from 'axios';
+import { LoginForm } from './Login.types';
+import { LoginData } from './Login.types';
 import { Title } from '../../components/Title/Title';
 import { Input } from '../../components/Input/Input';
 import { Button } from '../../components/Button/Button';
-import { Link } from 'react-router-dom';
-import { FormEvent } from 'react';
 
 export function Login() {
-  const submit = (e: FormEvent) => {
+  const [error, setError] = useState<string | null>();
+
+  const sendLogin = async (email: string, password: string) => {
+    try {
+      const { data } = await axios.get<LoginData[]>(
+        'https://moredasha.github.io/food-delivery/backend/login.json'
+      );
+      const user = data.find(
+        (item) => item.email === email && item.password === password
+      );
+      if (!user) {
+        setError('Неверный логин или пароль');
+      } else {
+        console.log(user.access_token);
+      }
+      //return user.access_token;
+    } catch(e) {
+      console.error(e);
+      if (e instanceof AxiosError) {
+        setError(e.message);
+      }
+      return;
+    }
+  };
+
+  const submit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log(e);
+    setError(null);
+    const target = e.target as typeof e.target & LoginForm;
+    const { email, password } = target;
+    await sendLogin(email.value, password.value);
   };
 
   return (
@@ -18,18 +49,21 @@ export function Login() {
         <div className={styles['inputs-wrap']}>
           <label className={styles['label']}>
             <span className={styles['placeholder']}>Email</span>
-            <Input placeholder='Email'/>
+            <Input required name="email" type="email" placeholder="Email" />
           </label>
           <label className={styles['label']}>
             <span className={styles['placeholder']}>Пароль</span>
-            <Input placeholder='Пароль'/>
+            <Input required name="password" type="password" placeholder="Пароль" />
           </label>
+          {error && <span className={styles['error']}>{error}</span>}
         </div>
-        <Button appearence='large'>Вход</Button>
+        <Button appearence="large">Вход</Button>
       </form>
       <div className={styles['helper']}>
         <span className={styles['lhelper-text']}>Нет аккаунта?</span>
-        <Link to="/auth/registration" className={styles['helper-link']} >Зарегистрироваться</Link>
+        <Link to="/auth/registration" className={styles['helper-link']}>
+          Зарегистрироваться
+        </Link>
       </div>
     </div>
   );

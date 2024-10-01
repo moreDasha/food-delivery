@@ -31,6 +31,10 @@
   color: var(--gray-color);
 }
 
+.error {
+  color: var(--error-color);
+}
+
 .helper {
   display: flex;
   flex-direction: column;

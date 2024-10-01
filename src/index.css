@@ -6,6 +6,7 @@
   --gray-color: #bcbcbc;
   --gray-dark-color: #9b9b9b;
   --white-color: #FFFFFF;
+  --error-color: #ff4530;
   --transition: ease-in-out .3s;
   --panel-width: 280px;
   --box-shadow: 6px 6px 32px -16px rgba(0,0,0,0.2);
