@@ -43,6 +43,29 @@
   animation: loader-rotate .7s ease-in-out alternate infinite;
 }
 
+.loader-icon-plate svg {
+  width: 100%;
+  height: 100%;
+}
+
+.loader-icon-plate svg path:nth-child(1) {
+  fill: #C97E67;
+}
+
+.loader-icon-plate svg path:nth-child(2) {
+  fill: #8F5543;
+}
+
+.loader-icon-plate svg path:nth-child(3),
+.loader-icon-plate svg path:nth-child(5) {
+  fill: #f1a249;
+}
+
+.loader-icon-plate svg path:nth-child(4),
+.loader-icon-plate svg path:nth-child(6) {
+  fill: #f7b970;
+}
+
 .loader-text {
   opacity: 0.5;
   font-weight: 600;

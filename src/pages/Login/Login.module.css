@@ -1,0 +1,54 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  align-items: center;
+}
+
+.login-form input {
+  width: 350px;
+}
+
+.inputs-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.placeholder {
+  color: var(--gray-color);
+}
+
+.error {
+  color: var(--error-color);
+}
+
+.helper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: center;
+}
+
+.helper-link {
+  color: var(--accent-color);
+  transition: color var(--transition);
+}
+
+@media (any-hover: hover) {
+  .helper-link:hover {
+    color: var(--accent-light-color);
+  }
+}

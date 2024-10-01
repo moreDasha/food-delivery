@@ -19,7 +19,7 @@
   background-color: var(--accent-color);
 }
 
-.error-icon img {
+.error-icon svg {
   width: 75%;
   height: 75%;
 }

@@ -18,14 +18,15 @@ export function Menu() {
     try {
       setIsLoading(true);
 
+      // симуляция задержки загрузки для просмотре прелоадера
       await new Promise<void>((resolve) => {
         setTimeout(() => {
           resolve();
-        }, 2000);
+        }, 1500);
       });
 
       const { data } = await axios.get<ProductCardProps[]>(
-        'https://moredasha.github.io/food-delivery/products.json'
+        'https://moredasha.github.io/food-delivery/backend/products.json'
       );
       setProducts(data);
       setIsLoading(false);
@@ -41,7 +42,7 @@ export function Menu() {
     // fetch запрос
     // try {
     //   const res = await fetch(
-    //     'https://moredasha.github.io/food-delivery/products.json'
+    //     'https://moredasha.github.io/food-delivery/backend/products.json'
     //   );
 
     //   if (res.ok) {
@@ -91,3 +92,5 @@ export function Menu() {
     </div>
   );
 }
+
+export default Menu;
