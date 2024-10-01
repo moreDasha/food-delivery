@@ -38,7 +38,7 @@ const router = createBrowserRouter([
           return defer({
             data: new Promise((resolve, reject) => {
               setTimeout(() => {
-                axios.get('https://moredasha.github.io/food-delivery/products.json').then(response => {
+                axios.get('https://moredasha.github.io/food-delivery/backend/products.json').then(response => {
                   resolve(response.data.find((item: ProductCardProps) => String(item.id) === params.id));
                 }).catch(e => reject(e));
               }, 1500);
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
             }, 2000);
           });
 
-          const { data } = await axios.get<ProductCardProps[]>('https://moredasha.github.io/food-delivery/products.json');
+          const { data } = await axios.get<ProductCardProps[]>('https://moredasha.github.io/food-delivery/backend/products.json');
           const product = data.find((item) => (String(item.id) === params.id));
           return product; */
         }

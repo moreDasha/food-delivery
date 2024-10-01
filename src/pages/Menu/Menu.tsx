@@ -26,7 +26,7 @@ export function Menu() {
       });
 
       const { data } = await axios.get<ProductCardProps[]>(
-        'https://moredasha.github.io/food-delivery/products.json'
+        'https://moredasha.github.io/food-delivery/backend/products.json'
       );
       setProducts(data);
       setIsLoading(false);
@@ -42,7 +42,7 @@ export function Menu() {
     // fetch запрос
     // try {
     //   const res = await fetch(
-    //     'https://moredasha.github.io/food-delivery/products.json'
+    //     'https://moredasha.github.io/food-delivery/backend/products.json'
     //   );
 
     //   if (res.ok) {

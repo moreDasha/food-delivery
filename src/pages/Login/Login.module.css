@@ -8,29 +8,26 @@
   display: flex;
   flex-direction: column;
   gap: 56px;
-}
-
-.login-form button {
-  width: 100%;
+  align-items: center;
 }
 
 .login-form input {
   width: 350px;
 }
 
-.input-wrap {
+.inputs-wrap {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-.input-label {
+.label {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.label-placeholder {
+.placeholder {
   color: var(--gray-color);
 }
 
@@ -39,4 +36,15 @@
   flex-direction: column;
   gap: 6px;
   text-align: center;
+}
+
+.helper-link {
+  color: var(--accent-color);
+  transition: color var(--transition);
+}
+
+@media (any-hover: hover) {
+  .helper-link:hover {
+    color: var(--accent-light-color);
+  }
 }
