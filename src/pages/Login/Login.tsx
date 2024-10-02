@@ -1,5 +1,5 @@
 import styles from './Login.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FormEvent, useState } from 'react';
 import axios, { AxiosError } from 'axios';
 import { LoginForm } from './Login.types';
@@ -10,6 +10,7 @@ import { Button } from '../../components/Button/Button';
 
 export function Login() {
   const [error, setError] = useState<string | null>();
+  const navigate = useNavigate();
 
   const sendLogin = async (email: string, password: string) => {
     try {
@@ -23,6 +24,8 @@ export function Login() {
         setError('Неверный логин или пароль');
       } else {
         console.log(user.access_token);
+        localStorage.setItem('jwt', user.access_token);
+        navigate('/');
       }
       //return user.access_token;
     } catch(e) {
