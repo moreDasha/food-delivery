@@ -1,16 +1,19 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { UserState } from './slice.interfaces';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { UserInitState, UserState } from './slice.interfaces';
+import { loadState } from './store.methods';
+
+export const USER_DATA = 'userData';
 
 const initialState: UserState = {
-  jwt: null
+  jwt: loadState<UserInitState>(USER_DATA)?.jwt ?? null  
 };
 
 export const userSlice = createSlice({
    name: 'user',
    initialState,
    reducers: {
-    login: (state) => {
-      state.jwt = '';
+    login: (state, actions: PayloadAction<string>) => {
+      state.jwt = actions.payload;
     },
     logout: (state) => {
       state.jwt = null;
