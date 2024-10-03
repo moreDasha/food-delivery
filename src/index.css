@@ -1,4 +1,13 @@
 :root {
+  --red: #f08e83;
+  --red-dark: #ED7667;
+  --orange: #F7B970;
+  --orange-dark: #f8a84d;
+  --yellow: #fce47a;
+  --yellow-dark: #fdcb42;
+  --blue: #d8ecff;
+  --blue-dark: #badcff;
+
   --accent-color: #f08e83;
   --accent-light-color: #fab565;
   --background-color: #fcf1e4;
@@ -7,6 +16,7 @@
   --gray-dark-color: #9b9b9b;
   --white-color: #FFFFFF;
   --error-color: #ff4530;
+
   --transition: ease-in-out .3s;
   --panel-width: 280px;
   --box-shadow: 6px 6px 32px -16px rgba(0,0,0,0.2);

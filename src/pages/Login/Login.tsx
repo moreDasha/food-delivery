@@ -7,10 +7,14 @@ import { LoginData } from './Login.types';
 import { Title } from '../../components/Title/Title';
 import { Input } from '../../components/Input/Input';
 import { Button } from '../../components/Button/Button';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../store/store';
+import { uesrActions } from '../../store/user.slice';
 
 export function Login() {
   const [error, setError] = useState<string | null>();
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch> ();
 
   const sendLogin = async (email: string, password: string) => {
     try {
@@ -23,11 +27,9 @@ export function Login() {
       if (!user) {
         setError('Неверный логин или пароль');
       } else {
-        console.log(user.access_token);
-        localStorage.setItem('jwt', user.access_token);
+        dispatch(uesrActions.login(user.access_token));
         navigate('/');
       }
-      //return user.access_token;
     } catch(e) {
       console.error(e);
       if (e instanceof AxiosError) {
