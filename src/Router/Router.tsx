@@ -14,7 +14,7 @@ import { RequireAuth } from './RequireAuth';
 
 const Menu = lazy(() => import('../pages/Menu/Menu'));
 
-export const Router = createBrowserRouter([
+export const router = createBrowserRouter([
   {
     path: '/',
     element: <RequireAuth><Basic /></RequireAuth>,

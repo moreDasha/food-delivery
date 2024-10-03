@@ -1,10 +1,13 @@
 .login {
+  width: 50%;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   gap: 38px;
 }
 
 .login-form {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 56px;
@@ -12,10 +15,11 @@
 }
 
 .login-form input {
-  width: 350px;
+  width: 100%;
 }
 
 .inputs-wrap {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 24px;
