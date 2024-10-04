@@ -1,47 +1,32 @@
 import styles from './Login.module.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { FormEvent, useState } from 'react';
-import axios, { AxiosError } from 'axios';
+import { FormEvent, useEffect } from 'react';
 import { LoginForm } from './Login.types';
-import { LoginData } from './Login.types';
 import { Title } from '../../components/Title/Title';
 import { Input } from '../../components/Input/Input';
 import { Button } from '../../components/Button/Button';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../store/store';
-import { uesrActions } from '../../store/user.slice';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../store/store';
+import { login, uesrActions } from '../../store/user.slice';
 
 export function Login() {
-  const [error, setError] = useState<string | null>();
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch> ();
+  const { jwt, loginErrorMessage } = useSelector((state: RootState) => state.user);
 
-  const sendLogin = async (email: string, password: string) => {
-    try {
-      const { data } = await axios.get<LoginData[]>(
-        'https://moredasha.github.io/food-delivery/backend/login.json'
-      );
-      const user = data.find(
-        (item) => item.email === email && item.password === password
-      );
-      if (!user) {
-        setError('Неверный логин или пароль');
-      } else {
-        dispatch(uesrActions.login(user.access_token));
-        navigate('/');
-      }
-    } catch(e) {
-      console.error(e);
-      if (e instanceof AxiosError) {
-        setError(e.message);
-      }
-      return;
+  useEffect(() => {
+    if (jwt) {
+      navigate('/');
     }
+  }, [jwt, navigate]);
+
+  const sendLogin = async (email: string, password: string) =>  {
+    dispatch(login({email, password}));
   };
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
-    setError(null);
+    dispatch(uesrActions.clearLoginError());
     const target = e.target as typeof e.target & LoginForm;
     const { email, password } = target;
     await sendLogin(email.value, password.value);
@@ -60,7 +45,7 @@ export function Login() {
             <span className={styles['placeholder']}>Пароль</span>
             <Input required name="password" type="password" placeholder="Пароль" />
           </label>
-          {error && <span className={styles['error']}>{error}</span>}
+          {loginErrorMessage && <span className={styles['error']}>{loginErrorMessage}</span>}
         </div>
         <Button appearence="large">Вход</Button>
       </form>
