@@ -1,6 +1,12 @@
+export interface Profile {
+  id: number,
+  email: string,
+  name: string
+}
 export interface UserState {
   jwt: string | null,
-  loginErrorMessage?: string
+  loginErrorMessage?: string,
+  profile?: Profile 
 }
 
 export interface UserInitState {

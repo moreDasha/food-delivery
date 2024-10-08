@@ -8,7 +8,9 @@ export interface LoginForm {
 } 
 
 export interface LoginData {
+  id: number,
   email: string,
   password: string,
+  name: string
   access_token: string
 }

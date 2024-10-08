@@ -12,7 +12,7 @@ export const ProductCard = (props: ProductCardProps) => {
             {props.price} <span>₽</span>
           </div>
           <div className={styles['product-rating']}>
-          {props.rating}
+            {props.rating}
             <span>
               <img src="img/icons/star.svg" alt="star icon" />
             </span>
