@@ -1,8 +1,18 @@
 import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.css';
 import { ProductCardProps } from './ProductCard.props';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../store/store';
+import { cartActions } from '../../store/cart.slice';
 
 export const ProductCard = (props: ProductCardProps) => {
+
+  const dispatch = useDispatch<AppDispatch>();
+
+  const addToCart = () => {
+    dispatch(cartActions.addProduct(props.id));
+  };
+
   return (
     <div className={styles['product-card']}>
       <Link to={`/product/${props.id}`} className={styles['product-link']}>
@@ -25,7 +35,7 @@ export const ProductCard = (props: ProductCardProps) => {
           </p>
         </div>
       </Link>
-      <button className={styles['product-cart-btn']}>
+      <button className={styles['product-cart-btn']} onClick={addToCart}>
         <span>
           <img src="img/icons/cart-white.svg" alt="cart icon" />
         </span>

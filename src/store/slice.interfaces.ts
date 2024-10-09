@@ -12,3 +12,12 @@ export interface UserState {
 export interface UserInitState {
   jwt: string | null
 }
+
+export interface CartProduct {
+  id: number,
+  amount: number
+}
+
+export interface CartState {
+  products: CartProduct[]
+}
