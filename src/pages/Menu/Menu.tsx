@@ -5,15 +5,17 @@ import { ProductCard } from '../../components/ProductCard/ProductCard';
 import { ProductCardProps } from '../../components/ProductCard/ProductCard.props';
 import { Loader } from '../../components/Loader/Loader';
 import { ErrorItem } from '../../components/Error/ErrorItem';
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import axios, { AxiosError } from 'axios';
+import { NoResult } from '../../components/NoResult/NoResult';
 
 export function Menu() {
   const [products, setProducts] = useState<ProductCardProps[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | undefined>();
+  const [filter, setFilter] = useState<string>();
 
-  const getProducts = async () => {
+  const getProducts = async (name?: string) => {
     // axios запрос
     try {
       setIsLoading(true);
@@ -28,8 +30,20 @@ export function Menu() {
       const { data } = await axios.get<ProductCardProps[]>(
         'https://moredasha.github.io/food-delivery/backend/products.json'
       );
-      setProducts(data);
-      setIsLoading(false);
+
+      if (!name) {
+        setProducts(data);
+        setIsLoading(false);
+      } else {
+        const filterProducts = data.filter(
+          (item) =>
+            item.name.toLowerCase().includes(name) ||
+            item.composition.toLowerCase().includes(name)
+        );
+
+        setProducts(filterProducts);
+        setIsLoading(false);
+      }
     } catch (e) {
       console.error(e);
       if (e instanceof AxiosError) {
@@ -57,24 +71,29 @@ export function Menu() {
     // }
   };
 
+  const filteredProduct = (e: ChangeEvent<HTMLInputElement>) => {
+    setFilter(e.target.value.toLowerCase());
+  };
+
   useEffect(() => {
-    getProducts();
-  }, []);
+    getProducts(filter);
+  }, [filter]);
 
   return (
     <div className={styles['menu']}>
       <div className={styles['menu-header']}>
         <Title>Меню</Title>
-        <InputSearch placeholder="Введите блюдо или состав" />
+        <InputSearch
+          placeholder="Введите блюдо или состав"
+          onChange={filteredProduct}
+        />
       </div>
 
       {error && <ErrorItem text={error}></ErrorItem>}
 
-      {isLoading && (
-        <Loader text='Загружаем меню'></Loader>
-      )}
+      {isLoading && <Loader text="Загружаем меню"></Loader>}
 
-      {!isLoading && (
+      {!isLoading && products.length > 0  && (
         <div className={styles['menu-main']}>
           {products.map((item) => (
             <ProductCard
@@ -89,6 +108,8 @@ export function Menu() {
           ))}
         </div>
       )}
+
+      {!isLoading && products.length === 0  && <NoResult />}
     </div>
   );
 }
