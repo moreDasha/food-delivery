@@ -23,6 +23,23 @@ export const cartSlice = createSlice({
         }
         return item;
       });
+    },
+    removeProduct: (state, action: PayloadAction<number>) => {
+      const product = state.products.find((item) => (item.id === action.payload));
+      if (!product) {
+        return;
+      } else {
+        if (product.amount === 1) {
+          state.products = state.products.filter((item) => (item.id !== action.payload));
+        } else {
+          state.products.map((item) => {
+            if (item.id === action.payload) {
+              item.amount -= 1;
+            }
+            return item;
+          });
+        }
+      }
     }
   }
 });

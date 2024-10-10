@@ -2,11 +2,10 @@
   position: relative;
 }
 
-.product-link {
+.product-card-inner {
   border-bottom: 2px solid transparent;
   border-radius: 18px;
   height: 100%;
-  display: block;
   color: var(--black-color);
   background-color: var(--white-color);
   box-shadow: var(--box-shadow);
@@ -44,29 +43,30 @@
 }
 
 .product-cart-btn {
+  z-index: 2;
   top: 16px;
   right: 16px;
-  padding: 6px;
+  padding: 8px;
   background-color: var(--accent-color);
   transition: background-color var(--transition), padding var(--transition);
 }
 
 .product-cart-btn span {
   display: block;
-  width: 18px;
-  height: 18px;
+  width: 19px;
+  height: 19px;
 }
 
 .product-rating {
   border-bottom: 2px solid transparent;
-  bottom: -12px;
+  bottom: -14px;
   right: 16px;
   padding: 4px 10px;
   display: flex;
   gap: 4px;
   align-items: center;
   background-color: var(--white-color);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   transition: border var(--transition);
 }
@@ -78,36 +78,51 @@
 }
 
 .product-info {
-  padding: 24px 16px 16px 16px;
+  padding: 24px 18px 18px 18px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   transition: color var(--transition);
 }
 
 .product-name {
+  color: var(--black-color);
   font-weight: 600;
+  transition: color var(--transition);
+}
+
+.product-name::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
 
 .product-composition {
   opacity: 0.5;
   font-size: 14px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  max-height: calc(14px * 1.3);
+  -webkit-line-clamp: 1;
 }
   
 @media (any-hover: hover) {
-  .product-link:hover,
-  .product-link:hover .product-price,
-  .product-link:hover .product-rating {
+  .product-card-inner:hover,
+  .product-card-inner:hover .product-price,
+  .product-card-inner:hover .product-rating {
     border-color: var(--accent-light-color);
   }
 
-  .product-link:hover .product-info {
+  .product-card-inner:hover .product-info,
+  .product-card-inner:hover .product-name {
     color: var(--accent-light-color);
   }
 
   .product-cart-btn:hover {
     background-color: var(--accent-light-color);
-    padding-right: 10px;
-    padding-left: 10px;
+    padding-right: 12px;
+    padding-left: 12px;
   }
 }

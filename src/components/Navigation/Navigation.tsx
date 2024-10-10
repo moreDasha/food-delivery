@@ -36,7 +36,8 @@ export const Navigation = () => {
         <span className={styles['navigation-icon']}>
           <CartSvg />
         </span>
-        <span>Корзина {products.reduce((acc, item) => (acc += item.amount), 0)}</span>
+        <span>Корзина</span>
+        <span className={styles['navigation-cart-counter']}>{products.reduce((acc, item) => (acc += item.amount), 0)}</span>
       </NavLink>
     </nav>
   );

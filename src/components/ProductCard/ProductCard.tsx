@@ -6,7 +6,6 @@ import { AppDispatch } from '../../store/store';
 import { cartActions } from '../../store/cart.slice';
 
 export const ProductCard = (props: ProductCardProps) => {
-
   const dispatch = useDispatch<AppDispatch>();
 
   const addToCart = () => {
@@ -14,8 +13,8 @@ export const ProductCard = (props: ProductCardProps) => {
   };
 
   return (
-    <div className={styles['product-card']}>
-      <Link to={`/product/${props.id}`} className={styles['product-link']}>
+    <article className={styles['product-card']}>
+      <div className={styles['product-card-inner']}>
         <div className={styles['product-img']}>
           <img src={props.img} alt="food photo" />
           <div className={styles['product-price']}>
@@ -29,17 +28,17 @@ export const ProductCard = (props: ProductCardProps) => {
           </div>
         </div>
         <div className={styles['product-info']}>
-          <p className={styles['product-name']}>{props.name}</p>
-          <p className={styles['product-composition']}>
-            {props.composition}
-          </p>
+          <Link to={`/product/${props.id}`} className={styles['product-name']}>
+            {props.name}
+          </Link>
+          <p className={styles['product-composition']}>{props.composition}</p>
         </div>
-      </Link>
+      </div>
       <button className={styles['product-cart-btn']} onClick={addToCart}>
         <span>
           <img src="img/icons/cart-white.svg" alt="cart icon" />
         </span>
       </button>
-    </div>
+    </article>
   );
 };
