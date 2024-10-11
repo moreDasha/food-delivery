@@ -1,8 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CartState } from './slice.interfaces';
+import { CartInitState, CartState } from './slice.interfaces';
+import { loadState } from './store.methods';
+
+export const CART_DATA = 'cartData';
 
 const initialState: CartState = {
-  products: []
+  products: loadState<CartInitState>(CART_DATA)?.products ?? []
 }; 
 
 export const cartSlice = createSlice({
@@ -40,6 +43,9 @@ export const cartSlice = createSlice({
           });
         }
       }
+    },
+    cleanCart: (state) => {
+      state.products = [];
     }
   }
 });

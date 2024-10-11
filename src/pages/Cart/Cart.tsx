@@ -1,17 +1,21 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Title } from '../../components/Title/Title';
 import styles from './Cart.module.css';
-import { RootState } from '../../store/store';
+import { AppDispatch, RootState } from '../../store/store';
 import { CartProductCard } from '../../components/CartProductCard/CartProductCard';
 import { Button } from '../../components/Button/Button';
 import { useEffect, useState } from 'react';
 import { CartProductCardProps } from '../../components/CartProductCard/CartProductCard.props';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { cartActions } from '../../store/cart.slice';
 
 export function Cart() {
   const products = useSelector((state: RootState) => state.cart.products);
   const [productsList, setProductsList] =
     useState<(CartProductCardProps | undefined)[]>();
+  const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
 
   const getProduct = async (id: number) => {
     const { data } = await axios.get<CartProductCardProps[]>(
@@ -24,6 +28,12 @@ export function Cart() {
   const getProductsList = async () => {
     const list = await Promise.all(products.map((item) => getProduct(item.id)));
     setProductsList(list);
+  };
+
+  const checkout = () => {
+    // await axios.post()
+    dispatch(cartActions.cleanCart());
+    navigate('/success');
   };
 
   useEffect(() => {
@@ -55,11 +65,19 @@ export function Cart() {
         <div className={styles['cart-sum']}>
           <span>Итог</span>
           <div className={styles['cart-sum-price']}>
-            999
+            {products
+              .map((product) => {
+                const item = productsList?.find((el) => el?.id === product.id);
+                if (!item) {
+                  return 0;
+                }
+                return product.amount * item.price; 
+              })
+              .reduce((acc, el) => (acc += el), 0)}
             <span>₽</span>
           </div>
         </div>
-        <Button appearence="large">Оформить</Button>
+        <Button appearence="large" onClick={checkout}>Оформить</Button>
       </div>
     </div>
   );

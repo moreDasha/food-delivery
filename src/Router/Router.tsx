@@ -11,6 +11,7 @@ import { Registration } from '../pages/Registration/Registration';
 import { ProductCardProps } from '../components/ProductCard/ProductCard.props';
 import { ErrorItem } from '../components/Error/ErrorItem';
 import { RequireAuth } from './RequireAuth';
+import { Success } from '../pages/Success/Success';
 
 const Menu = lazy(() => import('../pages/Menu/Menu'));
 
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
       {
         path: '/cart',
         element: <Cart />
+      },
+      {
+        path: '/success',
+        element: <Success />
       },
       {
         path: '/product/:id',

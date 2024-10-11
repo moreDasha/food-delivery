@@ -21,3 +21,7 @@ export interface CartProduct {
 export interface CartState {
   products: CartProduct[]
 }
+
+export interface CartInitState {
+  products: CartProduct[] | []
+}
