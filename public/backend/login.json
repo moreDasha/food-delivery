@@ -1,7 +1,9 @@
 [
   {
+    "id": "1",
     "email": "user@12345.ru",
     "password": "12345",
+    "name": "User12345",
     "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAMTIzNDUucnUiLCJwYXNzd29yZCI6IjEyMzQ1In0.r0ahEUa7LUOQAC0wxxnsR1PudUMMPcrIkmMdDIeaSIk"
   }
 ]

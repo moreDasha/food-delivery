@@ -53,28 +53,16 @@
 }
 
 @keyframes rotate {
-  0% {
+  0%, 15% {
     transform: rotate(0deg);
   }
-  15% {
-    transform: rotate(0deg);
-  }
-  25% {
+  25%, 40% {
     transform: rotate(90deg);
   }
-  40% {
-    transform: rotate(90deg);
-  }
-  50% {
+  50%, 65% {
     transform: rotate(180deg);
   }
-  65% {
-    transform: rotate(180deg);
-  }
-  75% {
-    transform: rotate(270deg);
-  }
-  90% {
+  75%, 90% {
     transform: rotate(270deg);
   }
   100% {
@@ -83,28 +71,16 @@
 }
 
 @keyframes rotate-reverce {
-  0% {
+  0%, 15% {
     transform: rotate(0deg);
   }
-  15% {
-    transform: rotate(0deg);
-  }
-  25% {
+  25%, 40% {
     transform: rotate(-90deg);
   }
-  40% {
-    transform: rotate(-90deg);
-  }
-  50% {
+  50%, 65% {
     transform: rotate(-180deg);
   }
-  65% {
-    transform: rotate(-180deg);
-  }
-  75% {
-    transform: rotate(-270deg);
-  }
-  90% {
+  75%, 90% {
     transform: rotate(-270deg);
   }
   100% {

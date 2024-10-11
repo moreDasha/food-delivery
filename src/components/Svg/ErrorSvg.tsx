@@ -1,7 +1,7 @@
 export const ErrorSvg = () => {
   return (
     <svg
-      fill="#ffffff"
+      fill="currentColor"
       viewBox="-3.5 0 19 19"
       xmlns="http://www.w3.org/2000/svg"
     >

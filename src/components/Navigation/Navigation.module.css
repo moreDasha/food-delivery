@@ -31,6 +31,13 @@
   height: 100%;
 }
 
+.navigation-cart-counter {
+  color: var(--accent-color);
+  font-size: 13px;
+  font-weight: 600;
+  align-self: flex-start;
+}
+
 @media (any-hover: hover) {
   .navigation-link:hover {
     color: var(--accent-light-color);

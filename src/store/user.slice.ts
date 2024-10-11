@@ -3,6 +3,7 @@ import { UserInitState, UserState } from './slice.interfaces';
 import { loadState } from './store.methods';
 import axios from 'axios';
 import { LoginData } from '../pages/Login/Login.types';
+import { RootState } from './store';
 
 export const USER_DATA = 'userData';
 
@@ -19,6 +20,18 @@ export const login = createAsyncThunk(
     const user = data.find(
       (item) => item.email === params.email && item.password === params.password
     );
+    return user;
+  }
+);
+
+export const getProfile = createAsyncThunk<LoginData | undefined, void, { state: RootState}>(
+  'user/getProfile',
+  async (_, thunkApi) => {
+    const jwt = thunkApi.getState().user.jwt;
+    const { data } = await axios.get<LoginData[]>(
+      'https://moredasha.github.io/food-delivery/backend/login.json'
+    );
+    const user = data.find((item) => item.access_token === jwt);
     return user;
   }
 );
@@ -45,6 +58,14 @@ export const userSlice = createSlice({
     builder.addCase(login.rejected, (state, actions) => {
       state.loginErrorMessage = actions.error.message;
     });
+
+    builder.addCase(getProfile.fulfilled, (state, actions: PayloadAction<LoginData | undefined>) => {
+      if (actions.payload) {
+        state.profile = actions.payload;
+      } else {
+        /* error */
+      }
+    }); 
   }
 });
 
