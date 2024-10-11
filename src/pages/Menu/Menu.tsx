@@ -109,7 +109,7 @@ export function Menu() {
         </div>
       )}
 
-      {!isLoading && products.length === 0  && <NoResult />}
+      {!isLoading && products.length === 0  && <NoResult text='По вашему запросу ничего не найдено' />}
     </div>
   );
 }

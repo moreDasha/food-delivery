@@ -1,19 +1,29 @@
 import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.css';
 import { ProductCardProps } from './ProductCard.props';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../store/store';
 import { cartActions } from '../../store/cart.slice';
+import cn from 'classnames';
 
 export const ProductCard = (props: ProductCardProps) => {
   const dispatch = useDispatch<AppDispatch>();
+  const products = useSelector((state: RootState) => state.cart.products);
 
-  const addToCart = () => {
+  const addProduct = () => {
     dispatch(cartActions.addProduct(props.id));
   };
 
+  const removeProduct = () => {
+    dispatch(cartActions.removeProduct(props.id));
+  };
+
   return (
-    <article className={styles['product-card']}>
+    <article
+      className={cn(styles['product-card'], {
+        [styles['card-added']]: products.find((item) => item.id === props.id)
+      })}
+    >
       <div className={styles['product-card-inner']}>
         <div className={styles['product-img']}>
           <img src={props.img} alt="food photo" />
@@ -34,11 +44,18 @@ export const ProductCard = (props: ProductCardProps) => {
           <p className={styles['product-composition']}>{props.composition}</p>
         </div>
       </div>
-      <button className={styles['product-cart-btn']} onClick={addToCart}>
-        <span>
-          <img src="img/icons/cart-white.svg" alt="cart icon" />
-        </span>
-      </button>
+      <div className={styles['product-cart-btn-wrap']}>
+        <button className={styles['product-cart-remove-btn']} onClick={removeProduct}>
+          <span>&minus;</span>
+        </button>
+        <span className={styles['product-cart-counter']}>{products.find((item) => item.id === props.id)?.amount}</span>
+        <button className={styles['product-cart-add-btn']} onClick={addProduct}>
+          <span>
+            <img src="img/icons/cart-white.svg" alt="cart icon" />
+          </span>
+          <span>+</span>
+        </button>
+      </div>
     </article>
   );
 };

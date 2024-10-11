@@ -1,9 +1,8 @@
 import { BowlSvg } from '../Svg/BowlSvg';
 import { WaveSvg } from '../Svg/WaveSvg';
 import styles from './Loader.module.css';
-import { LoaderProps } from './Loader.props';
 
-export const Loader = ({ text }: LoaderProps) => {
+export const Loader = ({ text }: {text: string}) => {
   return (
     <div className={styles['loader']}>
       <div className={styles['loader-icon-group']}>

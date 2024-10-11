@@ -4,7 +4,7 @@ import { SkewerSvg } from '../Svg/SkewerSvg';
 import { VegetablesSvg } from '../Svg/VegetablesSvg';
 import styles from './NoResult.module.css';
 
-export const NoResult = () => {
+export const NoResult = ({ text }: {text: string}) => {
   return (
     <div className={styles['no-result']}>
       <div className={styles['no-result-icons']}>
@@ -13,7 +13,7 @@ export const NoResult = () => {
         <LobsterSvg />
         <VegetablesSvg />
       </div>
-      <span className={styles['no-result-text']}>По вашему запросу ничего не найдено</span>
+      <span className={styles['no-result-text']}>{text}</span>
     </div>
   );
 };

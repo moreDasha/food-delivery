@@ -9,6 +9,7 @@ import { CartProductCardProps } from '../../components/CartProductCard/CartProdu
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { cartActions } from '../../store/cart.slice';
+import { NoResult } from '../../components/NoResult/NoResult';
 
 export function Cart() {
   const products = useSelector((state: RootState) => state.cart.products);
@@ -43,42 +44,50 @@ export function Cart() {
   return (
     <div className={styles['cart']}>
       <Title>Корзина</Title>
-      <div className={styles['cart-main']}>
-        <div className={styles['cart-products']}>
-          {products.map((product) => {
-            const item = productsList?.find((el) => el?.id === product.id);
-            if (!item) {
-              return;
-            }
-            return (
-              <CartProductCard
-                key={item.id}
-                id={item.id}
-                name={item.name}
-                price={item.price}
-                img={item.img}
-                amount={product.amount}
-              />
-            );
-          })}
-        </div>
-        <div className={styles['cart-sum']}>
-          <span>Итог</span>
-          <div className={styles['cart-sum-price']}>
-            {products
-              .map((product) => {
-                const item = productsList?.find((el) => el?.id === product.id);
-                if (!item) {
-                  return 0;
-                }
-                return product.amount * item.price; 
-              })
-              .reduce((acc, el) => (acc += el), 0)}
-            <span>₽</span>
+      {products.length === 0 && <NoResult text='Ваша корзина пуста' />}
+
+      {products.length > 0 && (
+        <div className={styles['cart-main']}>
+          <div className={styles['cart-products']}>
+            {products.map((product) => {
+              const item = productsList?.find((el) => el?.id === product.id);
+              if (!item) {
+                return;
+              }
+              return (
+                <CartProductCard
+                  key={item.id}
+                  id={item.id}
+                  name={item.name}
+                  price={item.price}
+                  img={item.img}
+                  amount={product.amount}
+                />
+              );
+            })}
           </div>
+          <div className={styles['cart-sum']}>
+            <span>Итог</span>
+            <div className={styles['cart-sum-price']}>
+              {products
+                .map((product) => {
+                  const item = productsList?.find(
+                    (el) => el?.id === product.id
+                  );
+                  if (!item) {
+                    return 0;
+                  }
+                  return product.amount * item.price;
+                })
+                .reduce((acc, el) => (acc += el), 0)}
+              <span>₽</span>
+            </div>
+          </div>
+          <Button appearence="large" onClick={checkout}>
+            Оформить
+          </Button>
         </div>
-        <Button appearence="large" onClick={checkout}>Оформить</Button>
-      </div>
+      )}
     </div>
   );
 }
