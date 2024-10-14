@@ -22,6 +22,12 @@
   --box-shadow: 6px 6px 32px -16px rgba(0,0,0,0.2);
 }
 
+@media screen and (max-width: 1209px) {
+  :root {
+    --panel-width: 230px;
+  }
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

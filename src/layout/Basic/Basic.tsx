@@ -6,9 +6,9 @@ export function Basic() {
   return (
     <div className={styles['basic']}>
 	    <SidePanel/>
-      <div className={styles['content']}>
+      <main className={styles['content']}>
         <Outlet></Outlet>
-      </div>
+      </main>
     </div>
   );
 }

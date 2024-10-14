@@ -7,6 +7,7 @@ import { Title } from '../../components/Title/Title';
 import { AmountButtons } from '../../components/AmountButtons/AmountButtons';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
+import { MainContent } from '../../components/MainContent/MainContent';
 
 export function Product() {
   const product = useLoaderData() as { data: ProductCardProps };
@@ -17,10 +18,14 @@ export function Product() {
       <Suspense fallback={<Loader text="Загружаем блюдо"></Loader>}>
         <Await resolve={product.data}>
           {(data: ProductCardProps) => {
+            const currentProduct = addedProducts.find(
+              (item) => item.id === data.id
+            );
+
             return (
-              <div className={styles['product']}>
+              <MainContent>
                 <Title>{data.name}</Title>
-                <div className={styles['product-inform']}>
+                <div className={styles['product']}>
                   <div className={styles['product-img']}>
                     <img src={`../${data.img}`} alt="product photo" />
                   </div>
@@ -44,12 +49,12 @@ export function Product() {
                       </div>
                       <AmountButtons
                         id={data.id}
-                        amount={addedProducts.find((item) => item.id === data.id)?.amount}
+                        amount={currentProduct?.amount}
                       />
                     </div>
                   </div>
                 </div>
-              </div>
+              </MainContent>
             );
           }}
         </Await>

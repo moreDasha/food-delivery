@@ -31,3 +31,22 @@
 .user-contact {
   opacity: 0.4;
 }
+
+@media screen and (max-width: 1209px) {
+  .user {
+    gap: 14px;
+  }
+
+  .user-photo {
+    width: 70px;
+    height: 70px;
+  }
+
+  .user-info {
+    gap: 3px;
+  }
+
+  .user-name {
+    font-size: 18px;
+  }
+}

@@ -9,6 +9,7 @@ import cn from 'classnames';
 export const ProductCard = (props: ProductCardProps) => {
   const dispatch = useDispatch<AppDispatch>();
   const products = useSelector((state: RootState) => state.cart.products);
+  const currentProduct = products.find((item) => item.id === props.id);
 
   const addProduct = () => {
     dispatch(cartActions.addProduct(props.id));
@@ -21,7 +22,7 @@ export const ProductCard = (props: ProductCardProps) => {
   return (
     <article
       className={cn(styles['product-card'], {
-        [styles['card-added']]: products.find((item) => item.id === props.id)
+        [styles['card-added']]: currentProduct
       })}
     >
       <div className={styles['product-card-inner']}>
@@ -48,7 +49,7 @@ export const ProductCard = (props: ProductCardProps) => {
         <button className={styles['product-cart-remove-btn']} onClick={decreaseProductAmount}>
           <span>&minus;</span>
         </button>
-        <span className={styles['product-cart-counter']}>{products.find((item) => item.id === props.id)?.amount}</span>
+        <span className={styles['product-cart-counter']}>{currentProduct?.amount}</span>
         <button className={styles['product-cart-add-btn']} onClick={addProduct}>
           <span>
             <img src="img/icons/cart-white.svg" alt="cart icon" />

@@ -5,6 +5,7 @@ import styles from './CartProductCard.module.css';
 import { CartProductCardProps } from './CartProductCard.props';
 import { cartActions } from '../../store/cart.slice';
 import { AmountButtons } from '../AmountButtons/AmountButtons';
+import { Link } from 'react-router-dom';
 
 export const CartProductCard = (props: CartProductCardProps) => {
   const dispatch = useDispatch<AppDispatch>();
@@ -14,25 +15,29 @@ export const CartProductCard = (props: CartProductCardProps) => {
   };
 
   return (
-    <div className={styles['cart-product-card']}>
-      <div className={styles['img']}>
-        <img src={props.img} alt="product photo" />
-      </div>
-      <div className={styles['info']}>
-        <div className={styles['info-text']}>
-          <p className={styles['name']}>{props.name}</p>
-          <div className={styles['price']}>
-            {props.price}
-            <span>₽</span>
-          </div>
+    <article className={styles['cart-product-card-wrap']}>
+      <div className={styles['cart-product-card']}>
+        <div className={styles['img']}>
+          <img src={props.img} alt="product photo" />
         </div>
-        <AmountButtons id={props.id} amount={props.amount} />
+        <div className={styles['info']}>
+          <div className={styles['info-text']}>
+            <Link to={`/product/${props.id}`} className={styles['name']}>
+              {props.name}
+            </Link>
+            <div className={styles['price']}>
+              {props.price}
+              <span>₽</span>
+            </div>
+          </div>
+          <AmountButtons id={props.id} amount={props.amount} />
+        </div>
       </div>
       <div>
         <button className={styles['remove-button']} onClick={removeProduct}>
           <ErrorSvg />
         </button>
       </div>
-    </div>
+    </article>
   );
 };
