@@ -14,8 +14,8 @@ export const ProductCard = (props: ProductCardProps) => {
     dispatch(cartActions.addProduct(props.id));
   };
 
-  const removeProduct = () => {
-    dispatch(cartActions.removeProduct(props.id));
+  const decreaseProductAmount = () => {
+    dispatch(cartActions.decreaseProductAmount(props.id));
   };
 
   return (
@@ -45,7 +45,7 @@ export const ProductCard = (props: ProductCardProps) => {
         </div>
       </div>
       <div className={styles['product-cart-btn-wrap']}>
-        <button className={styles['product-cart-remove-btn']} onClick={removeProduct}>
+        <button className={styles['product-cart-remove-btn']} onClick={decreaseProductAmount}>
           <span>&minus;</span>
         </button>
         <span className={styles['product-cart-counter']}>{products.find((item) => item.id === props.id)?.amount}</span>

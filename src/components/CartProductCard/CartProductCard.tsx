@@ -4,14 +4,10 @@ import { ErrorSvg } from '../Svg/ErrorSvg';
 import styles from './CartProductCard.module.css';
 import { CartProductCardProps } from './CartProductCard.props';
 import { cartActions } from '../../store/cart.slice';
+import { AmountButtons } from '../AmountButtons/AmountButtons';
 
 export const CartProductCard = (props: CartProductCardProps) => {
-
   const dispatch = useDispatch<AppDispatch>();
-
-  const addProduct = () => {
-    dispatch(cartActions.addProduct(props.id));
-  };
 
   const removeProduct = () => {
     dispatch(cartActions.removeProduct(props.id));
@@ -26,15 +22,11 @@ export const CartProductCard = (props: CartProductCardProps) => {
         <div className={styles['info-text']}>
           <p className={styles['name']}>{props.name}</p>
           <div className={styles['price']}>
-          {props.price}
+            {props.price}
             <span>₽</span>
           </div>
         </div>
-        <div className={styles['info-buttons']}>
-          <button className={styles['amount-remove-button']} onClick={removeProduct}>&minus;</button>
-          <span className={styles['amount']}>{props.amount}</span>
-          <button className={styles['amount-add-button']} onClick={addProduct}>+</button>
-        </div>
+        <AmountButtons id={props.id} amount={props.amount} />
       </div>
       <div>
         <button className={styles['remove-button']} onClick={removeProduct}>

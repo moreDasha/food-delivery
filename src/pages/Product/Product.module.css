@@ -28,6 +28,13 @@
   box-shadow: var(--box-shadow);
 }
 
+.product-top {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .product-composition {
   display: flex;
   flex-direction: column;
@@ -42,6 +49,7 @@
 }
 
 .product-bottom {
+  margin-top: auto;
   display: flex;
   gap: 16px;
   justify-content: space-between;
@@ -58,6 +66,10 @@
 .product-price span {
   color: var(--red);
   font-weight: 600;
+}
+
+.product-rating {
+  justify-content: flex-end;
 }
 
 .product-rating span {
