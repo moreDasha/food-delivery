@@ -8,6 +8,7 @@ import { ErrorItem } from '../../components/Error/ErrorItem';
 import { ChangeEvent, useEffect, useState } from 'react';
 import axios, { AxiosError } from 'axios';
 import { NoResult } from '../../components/NoResult/NoResult';
+import { MainContent } from '../../components/MainContent/MainContent';
 
 export function Menu() {
   const [products, setProducts] = useState<ProductCardProps[]>([]);
@@ -80,7 +81,7 @@ export function Menu() {
   }, [filter]);
 
   return (
-    <div className={styles['menu']}>
+    <MainContent>
       <div className={styles['menu-header']}>
         <Title>Меню</Title>
         <InputSearch
@@ -94,7 +95,7 @@ export function Menu() {
       {isLoading && <Loader text="Загружаем меню"></Loader>}
 
       {!isLoading && products.length > 0  && (
-        <div className={styles['menu-main']}>
+        <div className={styles['menu']}>
           {products.map((item) => (
             <ProductCard
               key={item.id}
@@ -110,7 +111,7 @@ export function Menu() {
       )}
 
       {!isLoading && products.length === 0  && <NoResult text='По вашему запросу ничего не найдено' />}
-    </div>
+    </MainContent>
   );
 }
 

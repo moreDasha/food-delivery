@@ -10,6 +10,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { cartActions } from '../../store/cart.slice';
 import { NoResult } from '../../components/NoResult/NoResult';
+import { MainContent } from '../../components/MainContent/MainContent';
 
 export function Cart() {
   const products = useSelector((state: RootState) => state.cart.products);
@@ -42,12 +43,12 @@ export function Cart() {
   }, [products]);
 
   return (
-    <div className={styles['cart']}>
+    <MainContent>
       <Title>Корзина</Title>
       {products.length === 0 && <NoResult text='Ваша корзина пуста' />}
 
       {products.length > 0 && (
-        <div className={styles['cart-main']}>
+        <div className={styles['cart']}>
           <div className={styles['cart-products']}>
             {products.map((product) => {
               const item = productsList?.find((el) => el?.id === product.id);
@@ -88,6 +89,6 @@ export function Cart() {
           </Button>
         </div>
       )}
-    </div>
+    </MainContent>
   );
 }

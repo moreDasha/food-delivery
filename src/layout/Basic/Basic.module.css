@@ -5,3 +5,9 @@
 .content {
   padding: 40px;
 }
+
+@media screen and (max-width: 1209px) {
+  .content {
+    padding: 40px 30px;
+  }
+}

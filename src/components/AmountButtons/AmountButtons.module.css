@@ -1,0 +1,63 @@
+.buttons-wrap {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  height: max-content;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.remove-button,
+.add-button {
+  border-radius: 100%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 500;
+  transition: all var(--transition);
+  box-shadow: var(--box-shadow);
+}
+
+.remove-button {
+  border: 2px solid var(--accent-color);
+  background-color: transparent;
+  color: var(--accent-color);
+}
+
+.remove-button:disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.add-button {
+  background-color: var(--accent-color);
+  color: var(--white-color);
+}
+
+@media (any-hover: hover) {
+  .remove-button:not(:disabled):hover {
+    border-color: var(--accent-light-color);
+    color: var(--accent-light-color);
+  }
+
+  .add-button:not(:disabled):hover {
+    background-color: var(--accent-light-color);
+  }
+}
+
+@media screen and (max-width: 1209px) {
+  .remove-button,
+  .add-button {
+    width: 32px;
+    height: 32px;
+  }
+
+  .amount {
+    font-size: 16px;
+  }
+}

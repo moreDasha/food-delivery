@@ -27,7 +27,7 @@ export const cartSlice = createSlice({
         return item;
       });
     },
-    removeProduct: (state, action: PayloadAction<number>) => {
+    decreaseProductAmount: (state, action: PayloadAction<number>) => {
       const product = state.products.find((item) => (item.id === action.payload));
       if (!product) {
         return;
@@ -42,6 +42,14 @@ export const cartSlice = createSlice({
             return item;
           });
         }
+      }
+    },
+    removeProduct: (state, action: PayloadAction<number>) => {
+      const product = state.products.find((item) => (item.id === action.payload));
+      if (!product) {
+        return;
+      } else {
+        state.products = state.products.filter((item) => (item.id !== action.payload));
       }
     },
     cleanCart: (state) => {
