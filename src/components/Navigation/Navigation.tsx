@@ -5,6 +5,7 @@ import { MenuSvg } from '../Svg/MenuSvg';
 import { CartSvg } from '../Svg/CartSvg';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
+import { UserMobile } from '../UserMobile/UserMobile';
 
 export const Navigation = () => {
 
@@ -25,6 +26,7 @@ export const Navigation = () => {
         </span>
         <span>Меню</span>
       </NavLink>
+      <UserMobile />
       <NavLink
         to="/cart"
         className={({ isActive }) =>

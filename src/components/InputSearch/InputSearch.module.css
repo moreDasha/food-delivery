@@ -1,5 +1,6 @@
 .input-search-wrap {
   position: relative;
+  max-width: 50%;
 }
 
 .input-search {
@@ -8,6 +9,7 @@
   border-radius: 10px;
   padding: 16px 16px 16px 44px;
   width: 320px;
+  max-width: 100%;
   font-size: 18px;
   background-color: transparent;
   box-shadow: 15px 20px 45px 0px rgba(233, 233, 233, 0.25);
@@ -48,5 +50,23 @@
     left: 12px;
     width: 18px;
     height: 18px;
+  }
+}
+
+@media screen and (max-width: 839px) {
+  .input-search-wrap {
+    max-width: 100%;
+  }
+
+  .input-search {
+    padding: 10px 10px 10px 35px;
+    width: 320px;
+    font-size: 14px;
+  }
+
+  .input-search-icon {
+    left: 10px;
+    width: 16px;
+    height: 16px;
   }
 }

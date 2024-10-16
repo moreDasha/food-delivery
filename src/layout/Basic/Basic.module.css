@@ -11,3 +11,9 @@
     padding: 40px 30px;
   }
 }
+
+@media screen and (max-width: 839px) {
+  .basic {
+    padding-left: 0;
+  }
+}

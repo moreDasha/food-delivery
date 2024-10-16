@@ -62,3 +62,27 @@
       background-color: var(--accent-light-color);
     }
   }
+
+  @media screen and (max-width: 1209px) {
+    .large {
+      padding: 20px 50px; 
+    }
+  }
+
+  @media screen and (max-width: 839px) {
+    .large {
+      padding: 18px 42px; 
+      font-size: 14px;
+    }
+
+    .off {
+      padding: 8px 18px 8px 10px;
+      font-size: 16px;
+      gap: 8px;
+    }
+
+    .off > span {
+      width: 22px;
+      height: 22px;
+    }
+  }

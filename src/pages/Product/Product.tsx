@@ -15,7 +15,7 @@ export function Product() {
 
   return (
     <>
-      <Suspense fallback={<Loader text="Загружаем блюдо"></Loader>}>
+      <Suspense fallback={<Loader text="Загружаем блюдо" layout='alone'></Loader>}>
         <Await resolve={product.data}>
           {(data: ProductCardProps) => {
             const currentProduct = addedProducts.find(

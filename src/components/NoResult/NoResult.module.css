@@ -9,8 +9,8 @@
 
 .no-result-icons {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
 }
 
 .no-result-icons svg {
@@ -19,19 +19,19 @@
 }
 
 .no-result-icons svg:nth-child(1) {
-  animation: opacity1 8s  infinite;
+  animation: opacity1 7s  infinite;
 }
 
 .no-result-icons svg:nth-child(2) {
-  animation: opacity2 8s  infinite;
+  animation: opacity2 7s  infinite;
 }
 
 .no-result-icons svg:nth-child(3) {
-  animation: opacity3 8s  infinite;
+  animation: opacity3 7s  infinite;
 }
 
 .no-result-icons svg:nth-child(4) {
-  animation: opacity4 8s  infinite;
+  animation: opacity4 7s  infinite;
 }
 
 .no-result-text {
@@ -84,5 +84,16 @@
   }
   100% {
     opacity: 0;
+  }
+}
+
+@media screen and (max-width: 839px) {
+  .no-result {
+    gap: 38px;
+  }
+
+  .no-result-icons {
+    width: 80px;
+    height: 80px;
   }
 }

@@ -104,3 +104,30 @@
     height: 18px;
   }
 }
+
+@media screen and (max-width: 839px) {
+  .product-description {
+    padding: 20px;
+    gap: 10px;
+  }
+
+  .product-rating {
+    font-size: 14px;
+  }
+
+  .product-rating span {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media screen and (max-width: 529px) {
+  .product {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-img {
+    max-height: 250px;
+  }
+}

@@ -43,3 +43,36 @@
     color: var(--accent-light-color);
   }
 }
+
+@media screen and (max-width: 839px) {
+  .navigation {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+  }
+
+  .navigation-link {
+    padding: 18px;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 529px) {
+  .navigation {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .navigation-link span:nth-child(2) {
+    display: none;
+  }
+
+  .navigation-link {
+    padding: 14px 18px;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .navigation-icon {
+    width: 30px;
+    height: 30px;
+  }
+}

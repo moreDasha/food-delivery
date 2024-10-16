@@ -16,3 +16,17 @@
     gap: 24px;
   }
 }
+
+@media screen and (max-width: 839px) {
+  .menu-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+@media screen and (max-width: 529px) {
+  .menu {
+    display: flex;
+    flex-direction: column;
+  }
+}

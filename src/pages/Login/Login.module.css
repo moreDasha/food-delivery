@@ -56,3 +56,28 @@
     color: var(--accent-light-color);
   }
 }
+
+@media screen and (max-width: 1209px) {
+  .login {
+    width: 65%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 38px;
+  }
+
+  .login-form {
+    gap: 48px;
+  }
+}
+
+@media screen and (max-width: 839px) {
+  .login {
+    width: 100%;
+    gap: 28px;
+  }
+
+  .inputs-wrap {
+    gap: 18px;
+  }
+}
