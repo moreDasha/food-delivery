@@ -1,3 +1,9 @@
+.product-header {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
 .product {
   --title-size: 22px;
   display: grid;
@@ -106,6 +112,10 @@
 }
 
 @media screen and (max-width: 839px) {
+  .product-header {
+    gap: 16px;
+  }
+
   .product-description {
     padding: 20px;
     gap: 10px;

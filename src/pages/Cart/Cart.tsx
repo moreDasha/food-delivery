@@ -12,6 +12,7 @@ import { cartActions } from '../../store/cart.slice';
 import { NoResult } from '../../components/NoResult/NoResult';
 import { MainContent } from '../../components/MainContent/MainContent';
 import { Loader } from '../../components/Loader/Loader';
+import { ButtonBack } from '../../components/ButtonBack/ButtonBack';
 
 export function Cart() {
   const products = useSelector((state: RootState) => state.cart.products);
@@ -48,7 +49,10 @@ export function Cart() {
 
   return (
     <MainContent>
-      <Title>Корзина</Title>
+      <div className={styles['cart-header']}>
+        <ButtonBack />
+        <Title>Корзина</Title>
+      </div>
       {isLoading && <Loader text="Загружаем корзину"></Loader>}
 
       {!isLoading && products.length === 0 && <NoResult text='Ваша корзина пуста' />}

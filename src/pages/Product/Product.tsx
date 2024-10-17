@@ -8,6 +8,7 @@ import { AmountButtons } from '../../components/AmountButtons/AmountButtons';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { MainContent } from '../../components/MainContent/MainContent';
+import { ButtonBack } from '../../components/ButtonBack/ButtonBack';
 
 export function Product() {
   const product = useLoaderData() as { data: ProductCardProps };
@@ -24,7 +25,10 @@ export function Product() {
 
             return (
               <MainContent>
-                <Title>{data.name}</Title>
+                <div className={styles['product-header']}>
+                  <ButtonBack />
+                  <Title>{data.name}</Title>
+                </div>
                 <div className={styles['product']}>
                   <div className={styles['product-img']}>
                     <img src={`../${data.img}`} alt="product photo" />

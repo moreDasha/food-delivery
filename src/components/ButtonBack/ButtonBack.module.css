@@ -1,0 +1,24 @@
+.button-back {
+  display: flex;
+  color: var(--accent-light-color);
+  background-color: transparent;
+  transition: color var(--transition);
+}
+
+.button-back svg {
+  width: 36px;
+  height: 36px;
+}
+
+@media (any-hover: hover) {
+  .button-back:hover {
+    color: var(--accent-color);
+  }
+}
+
+@media screen and (max-width: 1209px) {
+  .button-back svg {
+    width: 32px;
+    height: 32px;
+  }
+}

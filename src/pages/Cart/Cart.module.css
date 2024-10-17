@@ -1,3 +1,9 @@
+.cart-header {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
 .cart {
   width: 85%;
   display: flex;
@@ -42,5 +48,11 @@
   .cart {
     width: 100%;
     gap: 38px;
+  }
+}
+
+@media screen and (max-width: 839px) {
+  .cart-header {
+    gap: 16px;
   }
 }
