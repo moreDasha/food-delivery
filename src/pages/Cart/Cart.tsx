@@ -22,7 +22,7 @@ export function Cart() {
   const dispatch = useDispatch<AppDispatch>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const getProduct = async (id: number) => {  
+  const getProduct = async (id: number) => {
     const { data } = await axios.get<CartProductCardProps[]>(
       'https://moredasha.github.io/food-delivery/backend/products.json'
     );
@@ -55,7 +55,9 @@ export function Cart() {
       </div>
       {isLoading && <Loader text="Загружаем корзину"></Loader>}
 
-      {!isLoading && products.length === 0 && <NoResult text='Ваша корзина пуста' />}
+      {!isLoading && products.length === 0 && (
+        <NoResult text="Ваша корзина пуста" />
+      )}
 
       {!isLoading && products.length > 0 && (
         <div className={styles['cart']}>
