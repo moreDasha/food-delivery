@@ -7,24 +7,24 @@ import { SkewerSvg } from '../../components/Svg/SkewerSvg';
 
 export function Auth() {
   return (
-    <div className={styles['auth']}>
+    <main className={styles['auth']}>
       <div className={styles['decor-part']}>
-        <div className={styles['decor']}>
-          <div className={styles['decor-line']}>
-            <BreakfastSvg />
-          </div>
-          <div className={styles['decor-center']}>
-            <SkewerSvg />
-            <VegetablesSvg />
-          </div>
-          <div className={styles['decor-line']}>
-            <LobsterSvg />
+          <div className={styles['decor']}>
+            <div className={styles['decor-line']}>
+              <BreakfastSvg />
+            </div>
+            <div className={styles['decor-center']}>
+              <SkewerSvg />
+              <VegetablesSvg />
+            </div>
+            <div className={styles['decor-line']}>
+              <LobsterSvg />
+            </div>
           </div>
         </div>
-      </div>
       <div className={styles['content']}>
         <Outlet></Outlet>
       </div>
-    </div>
+    </main>
   );
 }

@@ -1,10 +1,11 @@
 import { BowlSvg } from '../Svg/BowlSvg';
 import { WaveSvg } from '../Svg/WaveSvg';
 import styles from './Loader.module.css';
+import cn from 'classnames';
 
-export const Loader = ({ text }: {text: string}) => {
+export const Loader = ({ text, layout }: {text: string, layout?: string}) => {
   return (
-    <div className={styles['loader']}>
+    <div className={cn(styles['loader'], {[styles['alone']]: layout})}>
       <div className={styles['loader-icon-group']}>
         <span className={styles['loader-icon-wave']}>
           <WaveSvg />

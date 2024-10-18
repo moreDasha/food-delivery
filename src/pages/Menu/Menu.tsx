@@ -9,6 +9,7 @@ import { ChangeEvent, useEffect, useState } from 'react';
 import axios, { AxiosError } from 'axios';
 import { NoResult } from '../../components/NoResult/NoResult';
 import { MainContent } from '../../components/MainContent/MainContent';
+import { useDebounce } from '../../custom-hooks/useDebounce';
 
 export function Menu() {
   const [products, setProducts] = useState<ProductCardProps[]>([]);
@@ -76,6 +77,8 @@ export function Menu() {
     setFilter(e.target.value.toLowerCase());
   };
 
+  const debounceFilteredProduct = useDebounce(filteredProduct, 500).bind({});
+
   useEffect(() => {
     getProducts(filter);
   }, [filter]);
@@ -86,7 +89,7 @@ export function Menu() {
         <Title>Меню</Title>
         <InputSearch
           placeholder="Введите блюдо или состав"
-          onChange={filteredProduct}
+          onChange={debounceFilteredProduct}
         />
       </div>
 

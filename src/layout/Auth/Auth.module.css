@@ -1,11 +1,11 @@
 .auth {
-  padding: 40px 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   min-height: 100vh;
 }
 
 .decor-part {
+  padding: 40px 0;
   border-right: 1px solid var( --gray-color);
   display: flex;
   align-items: center;
@@ -20,7 +20,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  animation: rotate 14s  infinite;
 }
 
 .decor-line,
@@ -43,10 +42,10 @@
 .decor svg {
   width: 25%;
   aspect-ratio: 1 / 1;
-  animation: rotate-reverce 14s  infinite;
 }
 
 .content {
+  padding: 40px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -85,5 +84,39 @@
   }
   100% {
     transform: rotate(-360deg);
+  }
+}
+
+@media screen and (min-width: 840px) {
+  .decor {
+    animation: rotate 14s  infinite;
+  }
+
+  .decor svg {
+    animation: rotate-reverce 14s  infinite;
+  }
+}
+
+@media screen and (max-width: 1209px) {
+  .auth {
+    grid-template-columns: 45% auto;
+  }
+
+  .decor {
+    width: 65%;
+  }
+}
+
+@media screen and (max-width: 839px) {
+  .auth {
+    display: block;
+  }
+
+  .decor-part {
+    display: none;
+  }
+
+  .content {
+    padding: 40px 30px;
   }
 }

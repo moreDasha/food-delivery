@@ -15,3 +15,21 @@
 .side-panel > button {
   margin-top: auto;
 }
+
+@media screen and (max-width: 839px) {
+  .side-panel {
+    top: auto;
+    bottom: 0;
+    z-index: 100;
+    border-right: none;
+    padding: 0 30px;
+    border-top: 1px solid var( --gray-color);
+    width: 100%;
+    height: auto;
+    background-color: var(--background-color);
+  }
+
+  .side-panel > button {
+    display: none;
+  }
+}

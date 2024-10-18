@@ -11,6 +11,8 @@ import { useNavigate } from 'react-router-dom';
 import { cartActions } from '../../store/cart.slice';
 import { NoResult } from '../../components/NoResult/NoResult';
 import { MainContent } from '../../components/MainContent/MainContent';
+import { Loader } from '../../components/Loader/Loader';
+import { ButtonBack } from '../../components/ButtonBack/ButtonBack';
 
 export function Cart() {
   const products = useSelector((state: RootState) => state.cart.products);
@@ -18,6 +20,7 @@ export function Cart() {
     useState<(CartProductCardProps | undefined)[]>();
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const getProduct = async (id: number) => {
     const { data } = await axios.get<CartProductCardProps[]>(
@@ -28,8 +31,10 @@ export function Cart() {
   };
 
   const getProductsList = async () => {
+    setIsLoading(true);
     const list = await Promise.all(products.map((item) => getProduct(item.id)));
     setProductsList(list);
+    setIsLoading(false);
   };
 
   const checkout = () => {
@@ -44,10 +49,17 @@ export function Cart() {
 
   return (
     <MainContent>
-      <Title>Корзина</Title>
-      {products.length === 0 && <NoResult text='Ваша корзина пуста' />}
+      <div className={styles['cart-header']}>
+        <ButtonBack />
+        <Title>Корзина</Title>
+      </div>
+      {isLoading && <Loader text="Загружаем корзину"></Loader>}
 
-      {products.length > 0 && (
+      {!isLoading && products.length === 0 && (
+        <NoResult text="Ваша корзина пуста" />
+      )}
+
+      {!isLoading && products.length > 0 && (
         <div className={styles['cart']}>
           <div className={styles['cart-products']}>
             {products.map((product) => {

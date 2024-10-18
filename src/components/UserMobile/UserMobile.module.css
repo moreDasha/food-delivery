@@ -1,0 +1,65 @@
+.user {
+  display: none;
+}
+
+@media screen and (max-width: 839px) {
+  .user {
+    display: block;
+  }
+
+  .user-button {
+    padding: 12px 18px;
+    background-color: transparent;
+    color: var(--gray-dark-color);
+    transition: color var(--transition);
+  }
+
+  .active {
+    color: var(--accent-light-color);
+  }
+
+  .user-button-icon {
+    display: block;
+    width: 33px;
+    height: 33px;
+  }
+
+  .user-button-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .user-dialog {
+    position: fixed;
+    left: 50%;
+    bottom: var(--bottom-menu-height);
+    border: 1px solid var( --gray-color);
+    border-radius: 18px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background-color: var(--background-color);
+    transform: translate(-50%, 0);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all var(--transition);
+  }
+
+  .user-dialog.open {
+    transform: translate(-50%, 0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+  }
+}
+
+@media screen and (max-width: 529px) {
+  .user-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

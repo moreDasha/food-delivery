@@ -7,6 +7,10 @@
   gap: 32px;
 }
 
+.loader.alone {
+  padding: 155px 0 100px 0;
+}
+
 .loader-icon-group {
   display: flex;
   flex-direction: column;
@@ -86,5 +90,11 @@
   }
   to {
     stroke-dashoffset: 0;
+  }
+}
+
+@media screen and (max-width: 1209px) {
+  .loader.alone {
+    padding: 145px 0 100px 0;
   }
 }

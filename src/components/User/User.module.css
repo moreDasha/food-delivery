@@ -50,3 +50,22 @@
     font-size: 18px;
   }
 }
+
+@media screen and (max-width: 839px) {
+  .user:not(.mobile) {
+    display: none;
+  }
+
+  .user-photo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .user-name {
+    font-size: 14px;
+  }
+
+  .user-contact {
+    font-size: 12px;
+  }
+}
