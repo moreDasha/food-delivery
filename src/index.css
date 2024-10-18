@@ -70,7 +70,7 @@ img {
 
 @media screen and (max-width: 839px) {
   #root {
-    padding-bottom: var(--bottom-menu-height);
+    
   }
 
   body {

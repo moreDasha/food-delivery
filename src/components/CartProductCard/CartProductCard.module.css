@@ -9,6 +9,7 @@
   display: grid;
   grid-template-columns: 130px auto;
   gap: 16px;
+  height: fit-content;
 }
 
 .img {

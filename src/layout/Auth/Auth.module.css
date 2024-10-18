@@ -1,11 +1,11 @@
 .auth {
-  padding: 40px 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   min-height: 100vh;
 }
 
 .decor-part {
+  padding: 40px 0;
   border-right: 1px solid var( --gray-color);
   display: flex;
   align-items: center;
@@ -45,6 +45,7 @@
 }
 
 .content {
+  padding: 40px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -108,11 +109,14 @@
 
 @media screen and (max-width: 839px) {
   .auth {
-    padding: 40px 30px;
     display: block;
   }
 
   .decor-part {
     display: none;
+  }
+
+  .content {
+    padding: 40px 30px;
   }
 }
