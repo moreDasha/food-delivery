@@ -69,10 +69,6 @@ img {
 }
 
 @media screen and (max-width: 839px) {
-  #root {
-    
-  }
-
   body {
     font-size: 14px;
   }
